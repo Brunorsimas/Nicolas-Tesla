@@ -16,6 +16,7 @@
                 <li><a href="#sistema" class="nav-link">O Sistema</a></li>
                 <li><a href="#riscos" class="nav-link">Riscos & Impactos</a></li>
                 <li><a href="#conclusao" class="nav-link">Conclusão</a></li>
+                <li><a href="#materiais" class="nav-link">Materiais</a></li>
             </ul>
         </div>
     </nav>
@@ -187,6 +188,60 @@
         </div>
     </section>
 
+    <!-- Seção Materiais Complementares -->
+    <section id="materiais" class="section materiais-section">
+        <div class="container">
+            <h2 class="section-title">📚 Materiais Complementares</h2>
+            <p class="section-intro">Documentação completa e recursos adicionais sobre Nikola Tesla</p>
+
+            <!-- Mind Map -->
+            <div class="mindmap-container">
+                <h3>Mapa Mental - Eletricidade Sem Fio de Tesla</h3>
+                <img src="NotebookLM Mind Map.png" alt="Mind Map - Eletricidade Sem Fio de Tesla" class="mindmap-image">
+                <p class="mindmap-caption">Estrutura visual dos conceitos fundamentais e tecnologias de Tesla</p>
+            </div>
+
+            <!-- Botões para Arquivos Originais -->
+            <div class="materials-buttons">
+                <button class="material-btn" onclick="openDocumentModal('sistema')">
+                    <span class="material-icon">🔬</span>
+                    <span class="material-text">
+                        <strong>O Sistema Mundial Sem Fio</strong>
+                        <small>Documentação técnica completa</small>
+                    </span>
+                </button>
+
+                <button class="material-btn" onclick="openDocumentModal('riscos')">
+                    <span class="material-icon">⚠️</span>
+                    <span class="material-text">
+                        <strong>Riscos e Impactos Detalhados</strong>
+                        <small>Análise completa dos efeitos</small>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal para Sistema -->
+    <div id="sistemaModal" class="document-modal">
+        <div class="document-modal-content">
+            <button class="modal-close" onclick="closeDocumentModal()">&times;</button>
+            <div class="document-body" id="sistemaContent">
+                <!-- Conteúdo carregado dinamicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Riscos -->
+    <div id="riscosModal" class="document-modal">
+        <div class="document-modal-content">
+            <button class="modal-close" onclick="closeDocumentModal()">&times;</button>
+            <div class="document-body" id="riscosContent">
+                <!-- Conteúdo carregado dinamicamente -->
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
@@ -194,6 +249,49 @@
             <p>Baseado em pesquisas e análises detalhadas sobre a visão de Tesla.</p>
         </div>
     </footer>
+
+    <!-- Modal de Áudio -->
+    <div id="audioModal" class="audio-modal">
+        <div class="audio-modal-content">
+            <button class="audio-modal-close" onclick="closeAudioModal()">&times;</button>
+            <h2>🎧 Ouça Sobre Tesla</h2>
+            <p>Escolha um áudio para ouvir enquanto explora o site</p>
+            
+            <div class="audio-list">
+                <div class="audio-item" onclick="playAudio('Tesla_Energia_Livre__O_Mito_e_o_Dinheiro.m4a', 'Energia Livre: O Mito e o Dinheiro')">
+                    <div class="audio-icon">🎵</div>
+                    <div class="audio-info">
+                        <h3>Energia Livre: O Mito e o Dinheiro</h3>
+                        <p>Uma análise profunda sobre a tecnologia de energia livre de Tesla e seus impactos</p>
+                    </div>
+                    <div class="audio-play-btn">▶ Ouvir</div>
+                </div>
+
+                <div class="audio-item" onclick="playAudio('O_Mundo_Sem_Fio_de_Tesla.mp4', 'O Mundo Sem Fio de Tesla')">
+                    <div class="audio-icon">🎙️</div>
+                    <div class="audio-info">
+                        <h3>O Mundo Sem Fio de Tesla</h3>
+                        <p>Documentação sobre a visão do sistema mundial sem fio de Tesla</p>
+                    </div>
+                    <div class="audio-play-btn">▶ Ouvir</div>
+                </div>
+            </div>
+
+            <!-- Player de Áudio -->
+            <div id="audioPlayer" class="audio-player" style="display: none;">
+                <div class="player-title" id="playerTitle">Tocando...</div>
+                <audio id="audioElement" controls style="width: 100%; margin-top: 1rem;">
+                    Seu navegador não suporta o elemento de áudio.
+                </audio>
+                <button class="player-close-btn" onclick="stopAudio()">Fechar Player</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão de Flutuante para Abrir Modal -->
+    <button id="audioButton" class="audio-button" onclick="openAudioModal()" title="Ouvir áudio">
+        🎧
+    </button>
 
     <script src="script.js"></script>
 </body>

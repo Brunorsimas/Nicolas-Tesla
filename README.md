@@ -19,6 +19,7 @@ Documentar e apresentar de forma atraente:
 - **Tema Dark Mode**: Otimizado para leitura confortável
 - **Paleta de Cores**: Tons de azul ciano, magenta e roxo para uma estética futurista
 - **Animações**: Efeitos de scroll, hover e transição elegantes
+- **Modal de Áudio**: Popup interativo com player de áudio integrado
 
 ### Conteúdo Estratégico
 - **Seção Hero**: Introdução impactante com efeito de partículas
@@ -27,6 +28,8 @@ Documentar e apresentar de forma atraente:
 - **Riscos & Impactos**: Categorizado em segurança, interferência e ambiente
 - **Mitigações Modernas**: Tecnologias atuais que reduzem riscos
 - **Conclusão**: Resumo com 3 perspectivas (genialidade, desafio, futuro)
+- **Áudio Integrado**: Modal com 2 áudios para ouvir durante a navegação
+- **Materiais Complementares**: Mapa mental (PNG), documentação completa (HTML) em modais
 
 ## 📁 Estrutura de Arquivos
 
@@ -37,7 +40,10 @@ Nicolas Tesla/
 ├── script.js                     # Interatividade
 ├── README.md                     # Documentação
 ├── Eletricidade Sem Fio Riscos e Impactos.html   # Conteúdo original
-└── O Sistema Mundial Sem Fio de Nikola Tesla.html  # Conteúdo original
+├── O Sistema Mundial Sem Fio de Nikola Tesla.html  # Conteúdo original
+├── NotebookLM Mind Map.png       # Mapa mental visual
+├── O_Mundo_Sem_Fio_de_Tesla.mp4  # Vídeo complementar
+└── Tesla_Energia_Livre__O_Mito_e_o_Dinheiro.m4a  # Áudio complementar
 ```
 
 ## 🚀 Como Usar

@@ -596,3 +596,483 @@ body {
 .card:nth-child(4) { animation-delay: 0.4s; }
 .card:nth-child(5) { animation-delay: 0.5s; }
 .card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Modal de Áudio */
+.audio-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease;
+}
+
+.audio-modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.audio-modal-content {
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.98) 0%, rgba(15, 15, 30, 0.98) 100%);
+    border: 2px solid rgba(0, 212, 255, 0.3);
+    border-radius: 20px;
+    padding: 3rem;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 212, 255, 0.2);
+    animation: slideInUp 0.4s ease;
+}
+
+.audio-modal-close {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.audio-modal-close:hover {
+    transform: rotate(90deg);
+    color: var(--accent-secondary);
+}
+
+.audio-modal-content h2 {
+    font-size: 1.8rem;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+.audio-modal-content > p {
+    color: var(--text-light);
+    opacity: 0.8;
+    margin-bottom: 2rem;
+}
+
+.audio-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.audio-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(26, 26, 46, 0.7);
+    border: 2px solid rgba(0, 212, 255, 0.2);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.audio-item:hover {
+    background: rgba(26, 26, 46, 1);
+    border-color: var(--accent-color);
+    transform: translateX(10px);
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.15);
+}
+
+.audio-icon {
+    font-size: 2.5rem;
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.audio-info {
+    flex: 1;
+}
+
+.audio-info h3 {
+    font-size: 1.1rem;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+}
+
+.audio-info p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    opacity: 0.7;
+}
+
+.audio-play-btn {
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-secondary) 100%);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-weight: bold;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+}
+
+.audio-item:hover .audio-play-btn {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.5);
+}
+
+.audio-player {
+    background: rgba(0, 212, 255, 0.1);
+    border: 2px solid rgba(0, 212, 255, 0.3);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.player-title {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.player-close-btn {
+    display: block;
+    margin: 1rem auto 0;
+    padding: 0.8rem 1.5rem;
+    background: var(--accent-secondary);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.player-close-btn:hover {
+    background: var(--accent-color);
+    transform: scale(1.05);
+}
+
+/* Botão Flutuante de Áudio */
+.audio-button {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-secondary) 100%);
+    border: 3px solid rgba(0, 212, 255, 0.5);
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+    box-shadow: 0 5px 25px rgba(0, 212, 255, 0.3);
+    transition: all 0.3s ease;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.audio-button:hover {
+    transform: scale(1.15);
+    box-shadow: 0 10px 35px rgba(0, 212, 255, 0.5);
+}
+
+.audio-button:active {
+    transform: scale(0.95);
+}
+
+/* Animação de entrada */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Scrollbar do Modal */
+.audio-modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.audio-modal-content::-webkit-scrollbar-track {
+    background: rgba(0, 212, 255, 0.05);
+    border-radius: 10px;
+}
+
+.audio-modal-content::-webkit-scrollbar-thumb {
+    background: rgba(0, 212, 255, 0.3);
+    border-radius: 10px;
+}
+
+.audio-modal-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 212, 255, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .audio-modal-content {
+        padding: 2rem;
+        max-width: 90%;
+    }
+
+    .audio-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .audio-play-btn {
+        width: 100%;
+    }
+
+    .audio-button {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+}
+
+/* Seção Materiais Complementares */
+.materiais-section {
+    background: linear-gradient(180deg, rgba(15, 15, 30, 0.5) 0%, rgba(131, 56, 236, 0.05) 100%);
+}
+
+.mindmap-container {
+    background: rgba(26, 26, 46, 0.8);
+    border: 2px solid rgba(131, 56, 236, 0.3);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.mindmap-container h3 {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.mindmap-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.mindmap-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
+}
+
+.mindmap-caption {
+    color: var(--text-light);
+    opacity: 0.7;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.materials-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.material-btn {
+    background: rgba(26, 26, 46, 0.8);
+    border: 2px solid rgba(131, 56, 236, 0.3);
+    border-radius: 15px;
+    padding: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: left;
+}
+
+.material-btn:hover {
+    background: rgba(26, 26, 46, 1);
+    border-color: var(--accent-color);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 212, 255, 0.2);
+}
+
+.material-icon {
+    font-size: 3rem;
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.material-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.material-text strong {
+    color: var(--accent-color);
+    font-size: 1.1rem;
+}
+
+.material-text small {
+    color: var(--text-light);
+    opacity: 0.7;
+    font-size: 0.9rem;
+}
+
+/* Modal para Documentos */
+.document-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease;
+    overflow-y: auto;
+}
+
+.document-modal.show {
+    display: block;
+}
+
+.document-modal-content {
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.98) 0%, rgba(15, 15, 30, 0.98) 100%);
+    border: 2px solid rgba(0, 212, 255, 0.3);
+    border-radius: 20px;
+    margin: 2rem auto;
+    max-width: 900px;
+    width: 90%;
+    padding: 3rem;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 212, 255, 0.2);
+}
+
+.modal-close {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    transform: rotate(90deg);
+    color: var(--accent-secondary);
+}
+
+.document-body {
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+.document-body h1 {
+    color: var(--accent-color);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+.document-body h2 {
+    color: var(--accent-secondary);
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.document-body h3 {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.document-body p {
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.document-body ul {
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+}
+
+.document-body li {
+    margin-bottom: 0.8rem;
+}
+
+.document-body strong {
+    color: var(--accent-color);
+}
+
+.document-body em {
+    color: var(--accent-secondary);
+    font-style: italic;
+}
+
+/* Responsive Materiais */
+@media (max-width: 768px) {
+    .mindmap-container {
+        padding: 1rem;
+    }
+
+    .materials-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    .material-btn {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .document-modal-content {
+        padding: 2rem;
+        margin: 1rem auto;
+    }
+}

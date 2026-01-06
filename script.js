@@ -148,31 +148,39 @@ if (prefersReducedMotion.matches) {
     document.head.appendChild(style);
 }
 
-// Funções do Modal de Áudio
-function openAudioModal() {
-    const modal = document.getElementById('audioModal');
-    modal.classList.add('show');
-    document.body.style.overflow = 'hidden';
+// Funções do Mini Audio Player
+function toggleAudioMenu() {
+    const audioMenu = document.getElementById('audioMenu');
+    const audioPlayer = document.getElementById('audioPlayerCompact');
+    
+    audioMenu.classList.toggle('show');
+    
+    // Se abriu o menu, fecha o player
+    if (audioMenu.classList.contains('show')) {
+        audioPlayer.classList.remove('show');
+    }
 }
 
-function closeAudioModal() {
-    const modal = document.getElementById('audioModal');
-    modal.classList.remove('show');
-    document.body.style.overflow = 'auto';
-    stopAudio();
+function closeAudioMenu() {
+    const audioMenu = document.getElementById('audioMenu');
+    audioMenu.classList.remove('show');
 }
 
 function playAudio(audioFile, audioTitle) {
     const audioElement = document.getElementById('audioElement');
-    const playerTitle = document.getElementById('playerTitle');
-    const audioPlayer = document.getElementById('audioPlayer');
+    const playerTitle = document.querySelector('.player-title');
+    const audioMenu = document.getElementById('audioMenu');
+    const audioPlayer = document.getElementById('audioPlayerCompact');
+    
+    // Fechar o menu de áudios
+    audioMenu.classList.remove('show');
     
     // Definir o arquivo e título
     audioElement.src = audioFile;
-    playerTitle.textContent = '🎧 Tocando: ' + audioTitle;
+    playerTitle.textContent = audioTitle;
     
-    // Mostrar o player
-    audioPlayer.style.display = 'block';
+    // Mostrar o player compacto
+    audioPlayer.classList.add('show');
     
     // Reproduzir o áudio
     audioElement.play();
@@ -180,27 +188,64 @@ function playAudio(audioFile, audioTitle) {
 
 function stopAudio() {
     const audioElement = document.getElementById('audioElement');
-    const audioPlayer = document.getElementById('audioPlayer');
+    const audioPlayer = document.getElementById('audioPlayerCompact');
     
     audioElement.pause();
     audioElement.currentTime = 0;
-    audioPlayer.style.display = 'none';
+    audioPlayer.classList.remove('show');
 }
 
-// Fechar modal ao clicar fora dele
-window.addEventListener('click', function(event) {
-    const modal = document.getElementById('audioModal');
-    if (event.target === modal) {
-        closeAudioModal();
-    }
-});
+function closeAudioPlayer() {
+    stopAudio();
+}
 
-// Fechar modal ao pressionar ESC
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        closeAudioModal();
-        closeDocumentModal();
+// Event listeners para o mini audio player
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleBtn = document.getElementById('toggleAudioMenu');
+    const closeMenuBtn = document.querySelector('.audio-menu-close');
+    const audioMenuItems = document.querySelectorAll('.audio-menu-item');
+    const closePlayerBtn = document.querySelector('.player-close-compact');
+    const audioElement = document.getElementById('audioElement');
+    
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', toggleAudioMenu);
     }
+    
+    if (closeMenuBtn) {
+        closeMenuBtn.addEventListener('click', closeAudioMenu);
+    }
+    
+    audioMenuItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const audioFile = this.getAttribute('data-audio');
+            const audioTitle = this.getAttribute('data-title');
+            playAudio(audioFile, audioTitle);
+        });
+    });
+    
+    if (closePlayerBtn) {
+        closePlayerBtn.addEventListener('click', closeAudioPlayer);
+    }
+    
+    // Fechar menu ao clicar fora
+    document.addEventListener('click', function(event) {
+        const audioMenu = document.getElementById('audioMenu');
+        const toggleBtn = document.getElementById('toggleAudioMenu');
+        const miniAudioPlayer = document.getElementById('miniAudioPlayer');
+        
+        if (miniAudioPlayer && !miniAudioPlayer.contains(event.target)) {
+            audioMenu.classList.remove('show');
+        }
+    });
+    
+    // Fechar player ao pressionar ESC
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeAudioMenu();
+            closeAudioPlayer();
+            closeDocumentModal();
+        }
+    });
 });
 
 // Funções para Modais de Documentos

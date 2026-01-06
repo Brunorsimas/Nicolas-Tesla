@@ -197,7 +197,7 @@
             <!-- Mind Map -->
             <div class="mindmap-container">
                 <h3>Mapa Mental - Eletricidade Sem Fio de Tesla</h3>
-                <img src="NotebookLM Mind Map.png" alt="Mind Map - Eletricidade Sem Fio de Tesla" class="mindmap-image">
+                <img src="Fontes/NotebookLM Mind Map.png" alt="Mind Map - Eletricidade Sem Fio de Tesla" class="mindmap-image">
                 <p class="mindmap-caption">Estrutura visual dos conceitos fundamentais e tecnologias de Tesla</p>
             </div>
 
@@ -242,6 +242,39 @@
         </div>
     </div>
 
+    <!-- Mini Player de Áudio Fixo -->
+    <div id="miniAudioPlayer" class="mini-audio-player">
+        <button id="toggleAudioMenu" class="audio-toggle-btn" title="Abrir menu de áudios">🎧</button>
+        
+        <div id="audioMenu" class="audio-menu">
+            <div class="audio-menu-header">
+                <span>Áudios</span>
+                <button class="audio-menu-close" title="Fechar menu">×</button>
+            </div>
+            
+            <div class="audio-menu-list">
+                <button class="audio-menu-item" data-audio="Tesla_Energia_Livre__O_Mito_e_o_Dinheiro.m4a" data-title="Energia Livre: O Mito e o Dinheiro">
+                    <span class="audio-menu-icon">🎵</span>
+                    <span class="audio-menu-text">Energia Livre</span>
+                </button>
+                
+                <button class="audio-menu-item" data-audio="O_Mundo_Sem_Fio_de_Tesla.mp4" data-title="O Mundo Sem Fio de Tesla">
+                    <span class="audio-menu-icon">🎙️</span>
+                    <span class="audio-menu-text">Mundo Sem Fio</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Player Compacto -->
+        <div id="audioPlayerCompact" class="audio-player-compact">
+            <button class="player-close-compact" title="Fechar player">✕</button>
+            <div class="player-info">
+                <div class="player-title" id="playerTitle">🎧 Reproduzindo...</div>
+            </div>
+            <audio id="audioElement" controls style="width: 100%; height: 30px;"></audio>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
@@ -250,48 +283,6 @@
         </div>
     </footer>
 
-    <!-- Modal de Áudio -->
-    <div id="audioModal" class="audio-modal">
-        <div class="audio-modal-content">
-            <button class="audio-modal-close" onclick="closeAudioModal()">&times;</button>
-            <h2>🎧 Ouça Sobre Tesla</h2>
-            <p>Escolha um áudio para ouvir enquanto explora o site</p>
-            
-            <div class="audio-list">
-                <div class="audio-item" onclick="playAudio('Tesla_Energia_Livre__O_Mito_e_o_Dinheiro.m4a', 'Energia Livre: O Mito e o Dinheiro')">
-                    <div class="audio-icon">🎵</div>
-                    <div class="audio-info">
-                        <h3>Energia Livre: O Mito e o Dinheiro</h3>
-                        <p>Uma análise profunda sobre a tecnologia de energia livre de Tesla e seus impactos</p>
-                    </div>
-                    <div class="audio-play-btn">▶ Ouvir</div>
-                </div>
-
-                <div class="audio-item" onclick="playAudio('O_Mundo_Sem_Fio_de_Tesla.mp4', 'O Mundo Sem Fio de Tesla')">
-                    <div class="audio-icon">🎙️</div>
-                    <div class="audio-info">
-                        <h3>O Mundo Sem Fio de Tesla</h3>
-                        <p>Documentação sobre a visão do sistema mundial sem fio de Tesla</p>
-                    </div>
-                    <div class="audio-play-btn">▶ Ouvir</div>
-                </div>
-            </div>
-
-            <!-- Player de Áudio -->
-            <div id="audioPlayer" class="audio-player" style="display: none;">
-                <div class="player-title" id="playerTitle">Tocando...</div>
-                <audio id="audioElement" controls style="width: 100%; margin-top: 1rem;">
-                    Seu navegador não suporta o elemento de áudio.
-                </audio>
-                <button class="player-close-btn" onclick="stopAudio()">Fechar Player</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Botão de Flutuante para Abrir Modal -->
-    <button id="audioButton" class="audio-button" onclick="openAudioModal()" title="Ouvir áudio">
-        🎧
-    </button>
 
     <script src="script.js"></script>
 </body>
